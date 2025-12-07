@@ -9,16 +9,28 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 COPY . .
 
-# First, find all .cpp files needed
-RUN echo "=== Listing all CPP files ===" && \
-    find . -name "*.cpp" | sort
-
-# Try to compile test_complete_system.cpp with proper includes
-RUN echo "=== Attempting compilation ===" && \
-    cd /app && \
+# Compile ALL required .cpp files together
+RUN echo "=== Compiling all source files ===" && \
     g++ -o server \
+        # Main file
         source/data_structures/functionalities/test_complete_system.cpp \
-        -std=c++11 \
+        # Flight entities
+        source/data_structures/flight_entities/flight.cpp \
+        source/data_structures/flight_entities/booking.cpp \
+        source/data_structures/flight_entities/passenger.cpp \
+        source/data_structures/flight_entities/gate.cpp \
+        source/data_structures/flight_entities/seat.cpp \
+        # Data structures
+        source/data_structures/Btree.cpp \
+        source/data_structures/node.cpp \
+        source/data_structures/storage_manager.cpp \
+        # Functionalities
+        source/data_structures/functionalities/flight_functions.cpp \
+        source/data_structures/functionalities/gate_functions.cpp \
+        source/data_structures/functionalities/passenger_functions.cpp \
+        source/data_structures/functionalities/graph.cpp \
+        # Flags
+        -std=c++17 \
         -pthread \
         -I/app \
         -I/app/source/data_structures \
