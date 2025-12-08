@@ -23,18 +23,4 @@ RUN if [ -f server ]; then \
 
 EXPOSE 8080
 CMD ./server ${PORT:-8080}
-EOF
 
-# Create railway.json here
-cat > railway.json << 'EOF'
-{
-  "$schema": "https://railway.app/railway.schema.json",
-  "build": {
-    "builder": "DOCKERFILE",
-    "dockerfilePath": "Dockerfile"
-  },
-  "deploy": {
-    "startCommand": "./server",
-    "healthcheckPath": "/api/health"
-  }
-}
