@@ -1,0 +1,70 @@
+ <div class="routes-page">
+    <div class="section-header">
+        <h2><i class="fas fa-route"></i> Route Finder</h2>
+        <div class="btn-group">
+            <button class="btn" onclick="app.navigateTo('dashboard')">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </button>
+            <button class="btn btn-success" onclick="routeManager.printItinerary()">
+                <i class="fas fa-print"></i> Print
+            </button>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h3><i class="fas fa-search-location"></i> Find Optimal Route</h3>
+        <div class="input-group">
+            <div style="flex: 1;">
+                <label>From</label>
+                <select id="route-from" style="width: 100%;">
+                    <!-- Cities will be populated -->
+                </select>
+            </div>
+            
+            <div style="flex: 1;">
+                <label>To</label>
+                <select id="route-to" style="width: 100%;">
+                    <!-- Cities will be populated -->
+                </select>
+            </div>
+            
+            <div style="flex: 1;">
+                <label>Criteria</label>
+                <select id="route-criteria" style="width: 100%;">
+                    <option value="shortest">Fastest Route</option>
+                    <option value="cheapest">Cheapest Route</option>
+                    <option value="fastest">Shortest Route</option>
+                </select>
+            </div>
+            
+            <div style="align-self: flex-end;">
+                <button class="btn" id="find-route-btn">
+                    <i class="fas fa-route"></i> Find Route
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="route-result">
+        <!-- Route results will appear here -->
+        <div class="message info">
+            <i class="fas fa-info-circle"></i>
+            <div>Select origin, destination and criteria to find the optimal route</div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h3><i class="fas fa-city"></i> Available Cities</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+            <div style="background: #f0f9ff; border-radius: 8px; padding: 12px 20px; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-plane" style="color: #0ea5e9;"></i>
+                <div>
+                    <div style="font-weight: 600;">ISL</div>
+                    <div style="font-size: 12px; color: #6b7280;">Islamabad</div>
+                </div>
+            </div>
+            <!-- More cities will be added dynamically -->
+        </div>
+    </div>
+</div>
+

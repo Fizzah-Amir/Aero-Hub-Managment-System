@@ -1,0 +1,201 @@
+id,airline,origin,destination,departure,arrival,gate,price,seats,status
+PK340,Pakistan Airlines,YYZ,AUH,22:00,08:45,,323.51,300,Cancelled
+SV629,Saudi Arabian,HKG,KUL,02:00,07:45,,1185.6,120,On-time
+DL258,Delta,ORD,ICN,02:45,13:00,,578.92,200,On-time
+QF513,Qantas,MEL,LAX,11:45,13:15,,143.36,150,Scheduled
+SQ886,Singapore Airlines,IST,PEW,09:15,13:15,,934.67,180,Scheduled
+LH703,Lufthansa,ICN,ORD,04:30,10:00,B04,344.11,180,Delayed
+EK375,Emirates,BKK,RUH,22:15,09:15,,447.87,200,Delayed
+LH480,Lufthansa,RUH,BKK,08:00,18:45,,88.04,250,Cancelled
+AA509,American Airlines,LAX,CDG,00:00,03:45,,1225.85,180,Cancelled
+QF976,Qantas,HKG,FRA,23:00,02:30,,285.73,250,Scheduled
+BA808,British Airways,SYD,BKK,13:00,21:15,,129.26,180,Cancelled
+BA122,British Airways,JED,PEW,09:45,13:15,A30,386.82,180,Cancelled
+TK490,Turkish Airlines,IST,ICN,14:00,15:00,,1149.54,200,Delayed
+QR173,Qatar Airways,ICN,NRT,03:00,07:30,B23,119.21,180,Cancelled
+AA745,American Airlines,RUH,KUL,22:45,07:45,,673.48,300,On-time
+CA876,Air China,BKK,LHE,08:45,19:30,,241.07,180,Cancelled
+TK957,Turkish Airlines,DOH,KUL,23:30,06:30,,796.31,120,Cancelled
+UA468,United,LHE,ISL,20:30,08:00,,1106.99,150,Scheduled
+EY376,Etihad,ORD,AMS,00:00,03:15,,392.58,180,On-time
+TK234,Turkish Airlines,JFK,ICN,22:15,01:45,,845.53,120,Scheduled
+PK869,Pakistan Airlines,ORD,NRT,14:45,22:15,,715.04,300,Delayed
+SV791,Saudi Arabian,LHR,SYD,12:15,20:00,,659.27,250,Delayed
+BA794,British Airways,CDG,FRA,09:45,16:00,C03,780.02,180,Cancelled
+NH414,ANA,MEL,SYD,08:45,13:30,,1035.08,200,Cancelled
+SV544,Saudi Arabian,JED,AMS,22:45,23:15,,670.99,200,On-time
+KE955,Korean Air,DOH,LHR,04:30,16:45,,339.35,250,Scheduled
+NH706,ANA,BKK,LHR,14:45,01:15,,822.13,150,On-time
+SQ522,Singapore Airlines,ISL,PEW,15:15,21:15,,88.09,200,Scheduled
+KE689,Korean Air,FRA,YYZ,12:45,22:00,B12,1107.75,250,Scheduled
+QF361,Qantas,RUH,KHI,19:30,03:45,,1176.61,200,On-time
+CX721,Cathay Pacific,JED,LHR,16:45,21:30,,837.69,300,Cancelled
+KE557,Korean Air,AUH,SIN,06:45,15:45,,157.02,180,Delayed
+QF869,Qantas,DOH,SIN,00:00,04:30,D11,152.81,120,Delayed
+AF122,Air France,ICN,RUH,18:30,05:45,,687.86,150,On-time
+PK126,Pakistan Airlines,KUL,DOH,05:45,08:00,,1155.4,250,Cancelled
+PK290,Pakistan Airlines,ICN,LHR,09:30,10:30,D18,101.38,250,On-time
+SV807,Saudi Arabian,ICN,KUL,01:00,13:00,,716.31,120,Scheduled
+SV845,Saudi Arabian,FRA,ISL,09:15,14:45,,524.68,300,Delayed
+EK871,Emirates,AUH,YYZ,23:00,06:30,,566.61,120,On-time
+DL857,Delta,ISL,PEW,23:30,07:30,,56.94,150,Delayed
+KE777,Korean Air,MEL,LAX,15:00,03:15,,172.09,300,On-time
+SQ467,Singapore Airlines,SYD,CDG,11:30,23:00,,1167.8,180,Scheduled
+TK696,Turkish Airlines,MEL,DOH,08:45,12:45,,304.16,300,Delayed
+EK299,Emirates,DXB,LHR,01:00,07:45,,886.32,200,On-time
+PK991,Pakistan Airlines,SIN,ORD,20:45,00:15,,363.9,180,Cancelled
+BA257,British Airways,KHI,DXB,09:30,13:00,,1160.01,250,Cancelled
+KE750,Korean Air,AUH,ISL,21:00,00:45,,542.59,250,Scheduled
+KE779,Korean Air,CDG,LAX,15:30,03:30,B34,856.32,180,Cancelled
+DL474,Delta,CDG,JFK,00:30,04:45,,1158.6,150,Cancelled
+CX194,Cathay Pacific,YYZ,FRA,06:45,14:30,,1276.73,180,Scheduled
+LH699,Lufthansa,DXB,AUH,12:45,18:45,D20,266.14,120,Scheduled
+PK408,Pakistan Airlines,FRA,YYZ,13:45,00:45,,228.72,200,Delayed
+NH542,ANA,ORD,KUL,10:15,11:30,,174.85,120,Delayed
+EY845,Etihad,SIN,LAX,05:15,10:15,,982.08,150,Cancelled
+LH124,Lufthansa,IST,ISL,09:15,19:45,,106.7,200,Scheduled
+CX319,Cathay Pacific,FRA,BKK,10:15,12:15,,346.12,180,Scheduled
+SQ665,Singapore Airlines,JED,LHR,16:45,03:30,,777.47,300,Delayed
+SQ681,Singapore Airlines,AUH,HKG,22:30,02:15,,833.58,120,Cancelled
+UA466,United,BKK,ISL,10:45,16:00,D25,944.5,200,Cancelled
+EY634,Etihad,FRA,ISL,05:45,15:15,,998.33,180,On-time
+PK589,Pakistan Airlines,SYD,DXB,07:30,10:30,,1114.05,120,Cancelled
+BA292,British Airways,YYZ,NRT,11:15,16:15,A28,347.71,200,Scheduled
+CA931,Air China,AUH,ISL,11:45,18:00,,1218.89,200,On-time
+PK338,Pakistan Airlines,LHE,ICN,08:00,16:15,,395.04,150,Scheduled
+AF989,Air France,DOH,KUL,01:15,03:45,,788.27,300,On-time
+CA617,Air China,MEL,LAX,11:30,15:45,,952.9,180,Delayed
+SQ314,Singapore Airlines,CDG,MEL,16:30,03:00,,1008.6,200,On-time
+LH785,Lufthansa,JFK,KUL,02:30,13:15,,782.74,250,Delayed
+SV203,Saudi Arabian,ICN,AUH,02:30,03:15,,211.42,200,On-time
+LH557,Lufthansa,LHR,KHI,16:15,21:30,A02,1191.09,120,On-time
+DL145,Delta,HKG,DOH,06:15,10:30,,194.25,200,On-time
+EY636,Etihad,HKG,LAX,18:00,21:00,,727.31,150,Scheduled
+CA131,Air China,NRT,LHE,19:45,01:45,,132.52,180,Delayed
+PK188,Pakistan Airlines,ICN,DOH,06:15,16:00,,782.07,300,Scheduled
+AA711,American Airlines,MEL,AMS,11:45,17:15,,1185.48,250,On-time
+SQ217,Singapore Airlines,SIN,PEW,16:15,20:45,,69.03,180,On-time
+AA977,American Airlines,YYZ,IST,13:15,20:00,,379.04,300,Scheduled
+KE796,Korean Air,LHE,AUH,09:00,11:00,,833.32,300,Delayed
+DL526,Delta,DXB,DOH,18:15,20:15,,84.06,200,Delayed
+CA443,Air China,SYD,BKK,15:00,22:30,,830.04,200,Cancelled
+SV791,Saudi Arabian,JED,CDG,17:00,04:45,,343.98,150,Scheduled
+QF146,Qantas,BKK,ISL,12:00,22:30,C33,785.75,200,On-time
+BA178,British Airways,JED,SYD,13:15,00:30,,600.29,150,Delayed
+AF432,Air France,DXB,AMS,18:15,03:45,,617.75,300,Delayed
+NH204,ANA,LHE,RUH,06:15,18:15,B17,832.58,150,Delayed
+BA377,British Airways,JFK,LHR,00:00,04:15,,427.29,150,Cancelled
+AA549,American Airlines,HKG,DOH,17:15,19:30,,888.28,250,Cancelled
+AA300,American Airlines,PEW,AUH,21:30,00:45,,110.4,300,On-time
+TK858,Turkish Airlines,NRT,RUH,21:45,06:30,,567.65,180,Scheduled
+KE246,Korean Air,LHE,KUL,13:15,22:00,,1381.62,200,Delayed
+AA126,American Airlines,LHR,DXB,03:15,12:15,A21,62.88,150,Cancelled
+NH997,ANA,ISL,ORD,00:45,09:00,,748.84,250,Delayed
+QF891,Qantas,AMS,AUH,01:45,05:15,,448.73,180,Delayed
+EK360,Emirates,ORD,SIN,02:00,04:30,,1336.05,180,Delayed
+SQ772,Singapore Airlines,KHI,ORD,18:45,05:30,,390.28,150,Cancelled
+BA317,British Airways,LHR,SIN,07:00,12:30,B01,551.05,250,Scheduled
+SV461,Saudi Arabian,AMS,CDG,18:15,03:15,D24,1189.06,300,On-time
+SQ797,Singapore Airlines,ISL,AUH,23:45,04:15,,1160.53,150,Delayed
+EK885,Emirates,JED,SIN,09:00,15:00,,962.52,120,On-time
+SQ683,Singapore Airlines,KUL,SIN,01:15,12:00,,597.94,150,Cancelled
+BA110,British Airways,AUH,FRA,01:00,03:45,,903.99,180,Cancelled
+AF683,Air France,FRA,YYZ,04:30,15:15,,1045.16,300,Delayed
+CA607,Air China,ISL,IST,04:15,09:15,,927.5,180,On-time
+CA274,Air China,FRA,MEL,21:30,04:00,,1087.34,150,On-time
+KE628,Korean Air,IST,LHR,18:15,20:45,,733.18,150,On-time
+TK619,Turkish Airlines,YYZ,HKG,12:30,21:45,,580.78,200,Scheduled
+AA597,American Airlines,DOH,YYZ,13:30,17:00,,189.24,300,On-time
+QR260,Qatar Airways,CDG,DXB,13:00,00:45,,1183.65,200,Scheduled
+SQ730,Singapore Airlines,HKG,PEW,21:15,00:30,,1034.2,180,On-time
+DL534,Delta,JFK,FRA,02:15,11:45,A16,1013.59,120,Delayed
+SV938,Saudi Arabian,SYD,AMS,13:30,00:15,B08,932.61,300,Scheduled
+AF176,Air France,KUL,JFK,01:30,04:00,,763.64,120,Delayed
+NH418,ANA,JFK,KHI,22:30,10:45,,414.29,150,Cancelled
+QF274,Qantas,LAX,AUH,17:00,03:45,,749.55,250,Cancelled
+PK789,Pakistan Airlines,ORD,AUH,23:45,02:30,,584.44,180,Scheduled
+AF446,Air France,HKG,RUH,09:15,21:00,,1208.91,200,On-time
+QR281,Qatar Airways,RUH,HKG,22:30,05:45,,783.15,300,Delayed
+EY643,Etihad,DOH,JFK,11:30,13:30,,73.42,200,On-time
+CA892,Air China,JED,FRA,17:00,22:00,,850.85,250,Scheduled
+DL296,Delta,YYZ,RUH,09:15,14:30,C06,897.06,300,Delayed
+DL249,Delta,ICN,ORD,01:45,13:30,,1074.71,150,Scheduled
+DL514,Delta,JFK,LHE,08:00,14:45,,727.6,300,Cancelled
+NH505,ANA,ORD,PEW,12:30,20:15,,572.89,300,Delayed
+SQ589,Singapore Airlines,ORD,NRT,05:30,07:00,,652.71,150,Cancelled
+AA529,American Airlines,ORD,PEW,06:30,07:45,,414.83,180,On-time
+CA837,Air China,YYZ,SYD,12:45,19:00,A05,121.85,120,Scheduled
+QF780,Qantas,JFK,IST,00:15,06:15,,991.23,250,Delayed
+NH802,ANA,DOH,KHI,05:45,06:30,,473.23,250,Delayed
+TK379,Turkish Airlines,FRA,HKG,01:15,13:00,,359.24,180,Delayed
+CX831,Cathay Pacific,NRT,LHE,19:15,07:45,,1214.41,200,Delayed
+BA363,British Airways,JED,FRA,21:15,04:45,,170.42,180,Scheduled
+EY870,Etihad,JFK,FRA,18:00,19:15,C22,130.63,250,Delayed
+UA189,United,HKG,FRA,14:30,00:15,,100.98,200,Scheduled
+LH842,Lufthansa,LHR,NRT,20:00,02:30,,124.43,120,On-time
+PK208,Pakistan Airlines,LAX,CDG,08:45,14:45,,169.13,250,Cancelled
+QR426,Qatar Airways,ICN,DXB,18:30,04:15,,924.3,120,Delayed
+LH523,Lufthansa,SYD,ICN,09:00,10:00,,636.82,300,On-time
+CA480,Air China,FRA,PEW,10:30,16:15,,966.34,250,Delayed
+KE971,Korean Air,AUH,NRT,03:00,12:30,C35,396.2,300,Cancelled
+TK687,Turkish Airlines,ORD,AMS,21:45,00:00,C26,807.79,180,Cancelled
+AF623,Air France,KHI,IST,04:30,15:15,,155.38,150,Delayed
+CA672,Air China,SIN,FRA,08:00,19:15,,805.81,120,Cancelled
+PK659,Pakistan Airlines,MEL,BKK,09:15,14:30,,254.89,200,On-time
+AF291,Air France,KHI,IST,16:15,22:30,,866.43,180,On-time
+AA573,American Airlines,MEL,LHR,18:15,02:45,,1258.2,120,On-time
+QR387,Qatar Airways,MEL,PEW,19:30,01:15,,1044.72,250,Scheduled
+UA977,United,LAX,KHI,04:00,05:45,,966.88,120,Scheduled
+PK228,Pakistan Airlines,LHR,JED,13:15,18:45,,958.8,200,Delayed
+NH386,ANA,AUH,KHI,14:00,22:30,,883.26,150,Delayed
+SQ561,Singapore Airlines,ISL,FRA,11:45,13:00,C15,634.25,300,Cancelled
+EY897,Etihad,AMS,NRT,18:00,02:15,,103.72,200,Scheduled
+AA400,American Airlines,HKG,FRA,18:30,03:00,,1073.88,250,Delayed
+PK753,Pakistan Airlines,KHI,LHR,19:30,05:30,B07,523.87,120,Scheduled
+SQ269,Singapore Airlines,JED,LAX,05:45,12:00,C27,878.28,120,On-time
+AA421,American Airlines,YYZ,AUH,22:30,10:30,,531.96,200,Delayed
+NH545,ANA,LHR,AUH,11:00,20:15,,793.55,150,On-time
+TK723,Turkish Airlines,SYD,HKG,23:00,07:00,,252.71,200,Cancelled
+EY671,Etihad,FRA,PEW,19:00,20:15,,747.55,250,On-time
+PK939,Pakistan Airlines,YYZ,LAX,16:30,17:30,,334.22,150,On-time
+SQ959,Singapore Airlines,PEW,BKK,03:00,09:30,,891.33,150,On-time
+QR564,Qatar Airways,DXB,LAX,23:45,05:00,C14,224.24,250,Cancelled
+LH581,Lufthansa,FRA,LAX,21:30,04:30,,1034.82,120,Delayed
+DL503,Delta,HKG,NRT,18:15,21:00,A31,474.58,200,Delayed
+SQ974,Singapore Airlines,AUH,ICN,16:00,23:30,A13,792.62,300,Delayed
+TK666,Turkish Airlines,IST,DXB,16:30,20:00,,901.24,150,On-time
+SV125,Saudi Arabian,PEW,RUH,22:15,06:00,,776.77,120,Cancelled
+PK341,Pakistan Airlines,SYD,FRA,02:45,09:30,,1012.22,150,Cancelled
+SQ676,Singapore Airlines,RUH,HKG,10:30,22:45,,182.69,250,Cancelled
+DL677,Delta,KHI,YYZ,02:30,08:45,,886.34,200,Delayed
+EY944,Etihad,MEL,SYD,05:45,12:00,,478.55,120,On-time
+LH982,Lufthansa,LHR,HKG,16:45,17:30,,780.53,150,Scheduled
+SV723,Saudi Arabian,BKK,MEL,17:00,20:15,,372.98,120,Scheduled
+AF499,Air France,BKK,LHR,04:15,14:00,,830.64,180,On-time
+AA673,American Airlines,YYZ,LAX,13:00,18:00,,280.71,120,Cancelled
+SV298,Saudi Arabian,LHR,JED,09:00,14:45,,919.02,180,On-time
+TK865,Turkish Airlines,ORD,KHI,22:45,02:15,A10,782.97,300,On-time
+QF673,Qantas,SIN,CDG,04:45,14:45,,271.23,250,Scheduled
+EK187,Emirates,LAX,JFK,18:45,03:15,,226.69,120,Delayed
+LH527,Lufthansa,JFK,JED,18:00,23:45,,313.72,250,On-time
+CX412,Cathay Pacific,BKK,KHI,13:30,14:45,,548.85,200,Cancelled
+SV365,Saudi Arabian,ORD,SIN,20:00,03:30,C09,358.22,150,On-time
+PK868,Pakistan Airlines,PEW,ICN,06:30,17:00,,787.6,250,Scheduled
+NH165,ANA,ICN,HKG,09:30,11:45,,852.69,150,Scheduled
+UA285,United,RUH,KHI,07:45,18:45,,994.38,200,Scheduled
+BA321,British Airways,MEL,ORD,02:15,12:30,,927.68,150,Cancelled
+CA768,Air China,DOH,FRA,11:00,17:15,,170.78,180,On-time
+PK211,Pakistan Airlines,BKK,KHI,22:15,10:00,,762.06,300,Delayed
+PK576,Pakistan Airlines,FRA,JED,04:15,14:00,,148.22,180,Delayed
+AA768,American Airlines,YYZ,PEW,06:30,13:15,,1132.15,120,Scheduled
+EY656,Etihad,ORD,SIN,12:45,22:00,,197.25,300,Scheduled
+KE354,Korean Air,ORD,ISL,15:00,17:00,,299.69,300,On-time
+UA855,United,ORD,SIN,21:30,03:00,,568.6,300,On-time
+QR948,Qatar Airways,LHE,ORD,22:00,05:45,,888.98,300,Cancelled
+QR505,Qatar Airways,DXB,JFK,16:15,01:45,,884.1,120,On-time
+BA747,British Airways,JFK,IST,11:15,17:30,C19,1052.29,250,Scheduled
+EY419,Etihad,DOH,CDG,16:00,02:15,D32,898.04,200,On-time
+CX209,Cathay Pacific,NRT,MEL,13:00,22:00,,341.33,180,Delayed
+SQ770,Singapore Airlines,JFK,KHI,16:45,01:15,,636.52,180,Cancelled
+KE776,Korean Air,ISL,MEL,17:15,20:45,,378.59,200,Cancelled
+AA158,American Airlines,SIN,IST,16:00,20:15,C29,806.68,250,Cancelled

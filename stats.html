@@ -1,0 +1,34 @@
+ <div class="stats-page">
+    <div class="section-header">
+        <h2><i class="fas fa-chart-bar"></i> System Analytics Dashboard</h2>
+        <div class="btn-group">
+            <button class="btn" onclick="app.navigateTo('dashboard')">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </button>
+            <button class="btn" id="refresh-stats">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+            <button class="btn btn-success" id="export-report">
+                <i class="fas fa-file-export"></i> Export Report
+            </button>
+        </div>
+    </div>
+    
+    <div id="system-overview">
+        <!-- System overview stats will be loaded here -->
+    </div>
+    
+    <div id="system-performance" style="margin-top: 25px;">
+        <!-- Performance metrics will be loaded here -->
+    </div>
+    
+    <div id="current-load" style="margin-top: 25px;">
+        <!-- Current load stats will be loaded here -->
+    </div>
+    
+    <div id="data-structures-info" style="margin-top: 25px;">
+        <!-- Data structures info will be loaded here -->
+    </div>
+</div>
+
+<script src="js/stats.js"></script>

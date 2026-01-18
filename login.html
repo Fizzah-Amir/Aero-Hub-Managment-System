@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈️ Admin Login - Airport Operations System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 420px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .login-header .icon {
+            font-size: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .login-header h1 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+
+        .login-header .subtitle {
+            color: #667eea;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+            font-size: 14px;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            border: 1px solid #cfc;
+        }
+
+        .credentials-info {
+            background: #f0f4ff;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #555;
+            border-left: 4px solid #667eea;
+        }
+
+        .credentials-info .title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .cred-section {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cred-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .role-admin {
+            background: #fee;
+            color: #c33;
+        }
+
+        .role-supervisor {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .cred-section .cred-item {
+            margin: 4px 0;
+            font-size: 12px;
+        }
+
+        .cred-section strong {
+            color: #333;
+        }
+
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .btn-login.loading .spinner {
+            display: block;
+        }
+
+        .btn-login.loading .btn-text {
+            display: none;
+        }
+
+        .role-indicator {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="icon">
+                <i class="fas fa-plane"></i>
+            </div>
+            <div class="subtitle">AeroHub Management System</div>
+            <h1>Staff Login</h1>
+            <p>Enter your credentials to access the system</p>
+        </div>
+
+        <div id="errorMessage" class="message error-message"></div>
+        <div id="successMessage" class="message success-message"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="role">Select Role</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user-tag"></i>
+                    <select id="role" name="role" required>
+                        <option value="">Choose your role...</option>
+                        <option value="admin">Admin</option>
+                        <option value="supervisor">Supervisor</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" required autocomplete="username" placeholder="Enter username">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Enter password">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login" id="loginBtn">
+                <span class="btn-text">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </span>
+                <div class="spinner"></div>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // User credentials with roles
+        const USERS = {
+            admin: {
+                password: 'admin123',
+                role: 'admin',
+                name: 'Admin User',
+                permissions: ['all']
+            },
+            supervisor: {
+                password: 'super123',
+                role: 'supervisor',
+                name: 'Supervisor User',
+                permissions: ['view_flights', 'view_gates', 'view_passengers', 'view_stats']
+            }
+        };
+
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const roleSelect = document.getElementById('role');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+
+        // Check if already logged in
+        if (sessionStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = '../index.html';
+        }
+
+        // Initialize activity log
+        function initializeActivityLog() {
+            if (!localStorage.getItem('activityLog')) {
+                localStorage.setItem('activityLog', JSON.stringify([]));
+            }
+        }
+
+        // Add activity to log
+        function logActivity(action, details, username, role) {
+            initializeActivityLog();
+            const log = JSON.parse(localStorage.getItem('activityLog') || '[]');
+            
+            const activity = {
+                id: Date.now(),
+                timestamp: new Date().toISOString(),
+                action: action,
+                details: details,
+                username: username,
+                role: role,
+                date: new Date().toLocaleString()
+            };
+            
+            log.unshift(activity);
+            
+            // Keep only last 100 activities
+            if (log.length > 100) {
+                log.pop();
+            }
+            
+            localStorage.setItem('activityLog', JSON.stringify(log));
+        }
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const role = roleSelect.value;
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+
+            // Hide previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Validate role selection
+            if (!role) {
+                errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please select a role!';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Show loading state
+            loginBtn.classList.add('loading');
+            loginBtn.disabled = true;
+
+            // Simulate a small delay for better UX
+            setTimeout(() => {
+                // Validate credentials
+                const user = USERS[username];
+                
+                if (user && user.password === password && user.role === role) {
+                    // Store login status with role information
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    sessionStorage.setItem('username', username);
+                    sessionStorage.setItem('userRole', user.role);
+                    sessionStorage.setItem('userName', user.name);
+                    sessionStorage.setItem('userPermissions', JSON.stringify(user.permissions));
+                    sessionStorage.setItem('loginTime', new Date().toISOString());
+
+                    // Log the login activity
+                    logActivity(
+                        'LOGIN',
+                        `${user.name} logged in as ${user.role}`,
+                        username,
+                        user.role
+                    );
+
+                    // Show success message
+                    successMessage.innerHTML = `<i class="fas fa-check-circle"></i> Welcome ${user.name}! Redirecting...`;
+                    successMessage.style.display = 'block';
+
+                    // Redirect to main page after 1 second
+                    setTimeout(() => {
+                        window.location.href = '../index.html';
+                    }, 1000);
+                } else {
+                    // Show error message
+                    let errorMsg = 'Invalid credentials!';
+                    if (user && user.password === password && user.role !== role) {
+                        errorMsg = 'Role mismatch! Please select the correct role for this user.';
+                    }
+                    
+                    errorMessage.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${errorMsg}`;
+                    errorMessage.style.display = 'block';
+                    
+                    // Log failed login attempt
+                    logActivity(
+                        'LOGIN_FAILED',
+                        `Failed login attempt for username: ${username}`,
+                        username || 'Unknown',
+                        role || 'Unknown'
+                    );
+                    
+                    // Remove loading state
+                    loginBtn.classList.remove('loading');
+                    loginBtn.disabled = false;
+                }
+            }, 500);
+        });
+
+        // Clear error on input
+        [roleSelect, usernameInput, passwordInput].forEach(input => {
+            input.addEventListener('input', () => {
+                errorMessage.style.display = 'none';
+            });
+        });
+
+        // Auto-fill username based on role selection (for demo purposes)
+        roleSelect.addEventListener('change', function() {
+            if (this.value === 'admin') {
+                usernameInput.placeholder = 'Try: admin';
+            } else if (this.value === 'supervisor') {
+                usernameInput.placeholder = 'Try: supervisor';
+            } else {
+                usernameInput.placeholder = 'Enter username';
+            }
+        });
+    </script>
+</body>
+</html>

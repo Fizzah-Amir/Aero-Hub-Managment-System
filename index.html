@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈️ Airport Operations System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Role Badge Styles */
+        .user-info-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .user-role {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+            margin-top: 2px;
+        }
+
+        .role-admin {
+            background: #fee;
+            color: #c33;
+        }
+
+        .role-supervisor {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* Activity Log Button */
+        .activity-log-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 999;
+            transition: all 0.3s;
+        }
+
+        .activity-log-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Activity Log Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            border-radius: 15px;
+            overflow: hidden;
+            animation: slideInUp 0.3s;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-modal {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: calc(80vh - 80px);
+            overflow-y: auto;
+        }
+
+        .log-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .activity-item {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #667eea;
+            animation: slideIn 0.3s;
+        }
+
+        .activity-item.login {
+            border-left-color: #10b981;
+        }
+
+        .activity-item.logout {
+            border-left-color: #ef4444;
+        }
+
+        .activity-item.action {
+            border-left-color: #f59e0b;
+        }
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .activity-action {
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .activity-details {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .activity-user {
+            font-size: 12px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .clear-log-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .clear-log-btn:hover {
+            background: #dc2626;
+        }
+
+        .no-activities {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .restricted-access {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- User Info Badge -->
+    <div class="user-info-badge" id="userInfoBadge">
+        <div class="user-avatar" id="userAvatar"></div>
+        <div class="user-details">
+            <div class="user-name" id="userName"></div>
+            <div class="user-role" id="userRole"></div>
+        </div>
+    </div>
+
+    <!-- Activity Log Button (Admin Only) -->
+    <button class="activity-log-btn" id="activityLogBtn" style="display: none;" title="Activity Log">
+        <i class="fas fa-history"></i>
+    </button>
+
+    <!-- Activity Log Modal -->
+    <div class="modal" id="activityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-clipboard-list"></i> Activity Log</h2>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="log-filters">
+                    <button class="filter-btn active" data-filter="all">All Activities</button>
+                    <button class="filter-btn" data-filter="login">Logins</button>
+                    <button class="filter-btn" data-filter="logout">Logouts</button>
+                    <button class="filter-btn" data-filter="action">Actions</button>
+                    <button class="clear-log-btn" id="clearLogBtn">
+                        <i class="fas fa-trash"></i> Clear Log
+                    </button>
+                </div>
+                <div id="activityList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-plane"></i> AIRPORT OPERATIONS SYSTEM</h1>
+            
+            <div class="nav-bar">
+                <button class="nav-btn active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </button>
+                <button class="nav-btn" data-page="flights">
+                    <i class="fas fa-plane-departure"></i> Flight Board
+                </button>
+                <button class="nav-btn" data-page="passengers">
+                    <i class="fas fa-user-check"></i> Passenger Check-in
+                </button>
+                <button class="nav-btn" data-page="gates">
+                    <i class="fas fa-door-closed"></i> Gate Management
+                </button>
+                <button class="nav-btn" data-page="routes">
+                    <i class="fas fa-route"></i> Route Optimization
+                </button>
+                <button class="nav-btn" data-page="stats">
+                    <i class="fas fa-chart-bar"></i> Analytics
+                </button>
+                <button class="nav-btn" style="margin-left: auto; background: #fef2f2; color: #dc2626;" 
+                        onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+        
+        <div class="content" id="content">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Authentication & Role Management Script -->
+    <script>
+        // Check authentication before anything else
+        (function() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+                window.location.href = 'pages/login.html';
+            }
+        })();
+
+        // Get user info
+        const username = sessionStorage.getItem('username');
+        const userRole = sessionStorage.getItem('userRole');
+        const userName = sessionStorage.getItem('userName');
+
+        // Display user info
+        document.getElementById('userAvatar').textContent = userName ? userName.charAt(0).toUpperCase() : 'U';
+        document.getElementById('userName').textContent = userName || username;
+        document.getElementById('userRole').textContent = userRole ? userRole.toUpperCase() : 'USER';
+        document.getElementById('userRole').classList.add('role-' + userRole);
+
+        // Show activity log button only for admin
+        if (userRole === 'admin') {
+            document.getElementById('activityLogBtn').style.display = 'flex';
+        }
+
+        // Activity Log Functions
+        function logActivity(action, details) {
+            if (!localStorage.getItem('activityLog')) {
+                localStorage.setItem('activityLog', JSON.stringify([]));
+            }
+            
+            const log = JSON.parse(localStorage.getItem('activityLog') || '[]');
+            
+            const activity = {
+                id: Date.now(),
+                timestamp: new Date().toISOString(),
+                action: action,
+                details: details,
+                username: username,
+                role: userRole,
+                date: new Date().toLocaleString()
+            };
+            
+            log.unshift(activity);
+            
+            if (log.length > 100) {
+                log.pop();
+            }
+            
+            localStorage.setItem('activityLog', JSON.stringify(log));
+        }
+
+        // Logout function
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                logActivity('LOGOUT', `${userName} logged out`);
+                sessionStorage.clear();
+                window.location.href = 'pages/login.html';
+            }
+        }
+
+        // Activity Log Modal
+        const activityModal = document.getElementById('activityModal');
+        const activityLogBtn = document.getElementById('activityLogBtn');
+        const closeModal = document.getElementById('closeModal');
+        const activityList = document.getElementById('activityList');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const clearLogBtn = document.getElementById('clearLogBtn');
+
+        let currentFilter = 'all';
+
+        activityLogBtn?.addEventListener('click', () => {
+            activityModal.classList.add('active');
+            loadActivities();
+        });
+
+        closeModal.addEventListener('click', () => {
+            activityModal.classList.remove('active');
+        });
+
+        activityModal.addEventListener('click', (e) => {
+            if (e.target === activityModal) {
+                activityModal.classList.remove('active');
+            }
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                loadActivities();
+            });
+        });
+
+        clearLogBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all activity logs? This cannot be undone.')) {
+                localStorage.setItem('activityLog', JSON.stringify([]));
+                logActivity('SYSTEM', 'Activity log cleared by admin');
+                loadActivities();
+            }
+        });
+
+        function loadActivities() {
+            const activities = JSON.parse(localStorage.getItem('activityLog') || '[]');
+            
+            let filteredActivities = activities;
+            if (currentFilter !== 'all') {
+                filteredActivities = activities.filter(a => {
+                    if (currentFilter === 'login') return a.action === 'LOGIN' || a.action === 'LOGIN_FAILED';
+                    if (currentFilter === 'logout') return a.action === 'LOGOUT';
+                    if (currentFilter === 'action') return !['LOGIN', 'LOGOUT', 'LOGIN_FAILED'].includes(a.action);
+                    return true;
+                });
+            }
+
+            if (filteredActivities.length === 0) {
+                activityList.innerHTML = '<div class="no-activities"><i class="fas fa-inbox" style="font-size: 48px; margin-bottom: 10px; opacity: 0.3;"></i><p>No activities to display</p></div>';
+                return;
+            }
+
+            activityList.innerHTML = filteredActivities.map(activity => {
+                let actionClass = 'action';
+                let icon = 'fa-bolt';
+                
+                if (activity.action === 'LOGIN') {
+                    actionClass = 'login';
+                    icon = 'fa-sign-in-alt';
+                } else if (activity.action === 'LOGOUT') {
+                    actionClass = 'logout';
+                    icon = 'fa-sign-out-alt';
+                } else if (activity.action === 'LOGIN_FAILED') {
+                    actionClass = 'logout';
+                    icon = 'fa-exclamation-triangle';
+                }
+
+                return `
+                    <div class="activity-item ${actionClass}">
+                        <div class="activity-header">
+                            <div class="activity-action">
+                                <i class="fas ${icon}"></i>
+                                ${activity.action.replace('_', ' ')}
+                            </div>
+                            <div class="activity-time">
+                                <i class="far fa-clock"></i> ${activity.date}
+                            </div>
+                        </div>
+                        <div class="activity-details">${activity.details}</div>
+                        <div class="activity-user">
+                            <i class="fas fa-user"></i> ${activity.username}
+                            <span class="user-role role-${activity.role}">${activity.role?.toUpperCase() || 'USER'}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Log page navigation
+        const navBtns = document.querySelectorAll('.nav-btn');
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const page = btn.dataset.page;
+                if (page) {
+                    logActivity('PAGE_VIEW', `Viewed ${page} page`);
+                }
+            });
+        });
+
+        console.log('Logged in as:', userName, '(' + userRole + ')');
+    </script>
+
+    <script src="js/role-restrictions.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

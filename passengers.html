@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Check-in - Flight Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="passengers-page">
+        <div class="section-header">
+            <h2><i class="fas fa-user-check"></i> Passenger Check-in System</h2>
+            <div class="btn-group">
+                <button class="btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </button>
+                <button class="btn btn-secondary" id="new-booking-btn">
+                    <i class="fas fa-plus"></i> New Booking
+                </button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fas fa-search"></i> Find Passenger by PNR</h3>
+            <div class="input-group">
+                <div style="flex: 1;">
+                    <input type="text" id="pnr-search" placeholder="Enter PNR (e.g., PNR5492)" 
+                           style="width: 100%;" value="PNR5492">
+                </div>
+                <button class="btn" id="search-btn">
+                    <i class="fas fa-search"></i> Search
+                </button>
+                <button class="btn btn-secondary" id="scan-qr-btn">
+                    <i class="fas fa-qrcode"></i> Scan QR
+                </button>
+            </div>
+        </div>
+        
+        <div id="search-result">
+            <div class="loader">
+                <div class="spinner"></div>
+                <div>Loading passenger system...</div>
+            </div>
+        </div>
+        
+        <div id="seat-map" style="margin-top: 30px;">
+            <!-- Seat map will be loaded here -->
+        </div>
+    </div>
+
+    <!-- DEBUG: Show loading status -->
+    <div id="debug-info" style="position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; font-size: 12px; display: none;">
+        Loading...
+    </div>
+
+    <!-- REPLACE THIS ENTIRE SCRIPT SECTION WITH MY VERSION -->
+    <script>
+        // Load API first
+        const apiScript = document.createElement('script');
+        apiScript.src = '../js/api.js';  // Change from 'js/api.js'
+        apiScript.onload = function() {
+            console.log('✅ API loaded');
+            
+            // Load passengers.js after API is loaded
+            const passengerScript = document.createElement('script');
+            passengerScript.src = '../js/passengers.js';  // Change from 'js/passengers.js'
+            passengerScript.onload = function() {
+                console.log('✅ passengers.js loaded');
+                initializePassengerPage();
+            };
+            passengerScript.onerror = function() {
+                console.error('❌ Failed to load passengers.js');
+                loadFallbackPassengerScript();
+            };
+            document.head.appendChild(passengerScript);
+        };
+        apiScript.onerror = function() {
+            console.error('❌ Failed to load api.js');
+            loadFallbackPassengerScript();
+        };
+        document.head.appendChild(apiScript);
+        
+        function loadFallbackPassengerScript() {
+            // Try direct path
+            const script = document.createElement('script');
+            script.src = '/frontend/js/passengers.js';
+            script.onload = function() {
+                console.log('✅ passengers.js loaded via fallback');
+                initializePassengerPage();
+            };
+            script.onerror = function() {
+                console.error('❌ All script loading attempts failed');
+                showError('Could not load required scripts. Check console for details.');
+            };
+            document.head.appendChild(script);
+        }
+        
+        function initializePassengerPage() {
+            console.log('🔄 Initializing passenger page...');
+            
+            // Show debug info
+            document.getElementById('debug-info').style.display = 'block';
+            document.getElementById('debug-info').textContent = 'Initializing...';
+            
+            // Check if API is available
+            if (typeof window.FlightAPI === 'undefined') {
+                console.error('❌ FlightAPI not found');
+                showError('FlightAPI not loaded. Check console for errors.');
+                return;
+            }
+            
+            console.log('✅ FlightAPI available:', window.FlightAPI);
+            
+            // Initialize PassengerManager
+            if (typeof PassengerManager === 'undefined') {
+                console.error('❌ PassengerManager class not found');
+                showError('PassengerManager class not found.');
+                return;
+            }
+            
+            window.passengerManager = new PassengerManager();
+            console.log('✅ PassengerManager initialized');
+            
+            // Set up search button
+            const searchBtn = document.getElementById('search-btn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    const pnr = document.getElementById('pnr-search').value.trim();
+                    if (pnr) {
+                        window.passengerManager.searchByPNR(pnr);
+                    } else {
+                        showError('Please enter a PNR number');
+                    }
+                });
+            }
+            
+            // Auto-search if there's a value
+            const pnrInput = document.getElementById('pnr-search');
+            if (pnrInput && pnrInput.value.trim()) {
+                setTimeout(() => {
+                    window.passengerManager.searchByPNR(pnrInput.value.trim());
+                }, 1000);
+            }
+            
+            // Set up new booking button
+            const newBookingBtn = document.getElementById('new-booking-btn');
+            if (newBookingBtn) {
+                newBookingBtn.addEventListener('click', function() {
+                    // Your new booking logic here
+                    alert('New booking feature would open here');
+                });
+            }
+            
+            // Set up QR scan button
+            const scanBtn = document.getElementById('scan-qr-btn');
+            if (scanBtn) {
+                scanBtn.addEventListener('click', function() {
+                    alert('QR scan feature would activate camera');
+                });
+            }
+            
+            // Hide debug info after success
+            setTimeout(() => {
+                document.getElementById('debug-info').style.display = 'none';
+            }, 2000);
+        }
+        
+        function showError(message) {
+            const resultDiv = document.getElementById('search-result');
+            if (resultDiv) {
+                resultDiv.innerHTML = `
+                    <div class="error-message" style="background: #fee; color: #c33; padding: 20px; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 24px; margin-bottom: 10px;"></i>
+                        <h4>Error</h4>
+                        <p>${message}</p>
+                        <button onclick="location.reload()" style="margin-top: 10px; padding: 8px 16px; background: #dc2626; color: white; border: none; border-radius: 4px;">
+                            <i class="fas fa-redo"></i> Reload Page
+                        </button>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
